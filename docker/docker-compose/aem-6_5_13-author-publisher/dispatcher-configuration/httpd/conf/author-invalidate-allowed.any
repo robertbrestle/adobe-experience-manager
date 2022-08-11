@@ -1,0 +1,6 @@
+/0
+  {
+  /glob "${AUTHOR_IP}"
+  /type "allow"
+  }
+

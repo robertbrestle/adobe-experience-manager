@@ -1,0 +1,7 @@
+/0
+  {
+  /hostname "${AUTHOR_IP}"
+  /port "4502"
+  /timeout "10000"
+  }
+

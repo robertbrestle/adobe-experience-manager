@@ -1,0 +1,21 @@
+[Unit]
+Description=Docker Compose AEM 6.5.13 Author + Publisher Environment
+Requires=docker.service
+After=docker.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+WorkingDirectory=/srv/docker
+ExecStart=/usr/local/bin/docker-compose up -d
+ExecStop=/usr/local/bin/docker-compose down
+TimeoutStartSec=0
+
+[Install]
+WantedBy=multi-user.target
+
+
+# /etc/systemd/system/aem6513authorpublish.service
+# systemctl start aem6513authorpublish.service
+# systemctl reload aem6513authorpublish.service
+# systemctl enable aem6513authorpublish.service

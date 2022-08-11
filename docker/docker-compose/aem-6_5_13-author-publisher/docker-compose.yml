@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+    aem6513auth-compose:
+        #image: example.azurecr.io/aem-6_5_13-author:latest
+        image: aem-6_5_13-author
+        #stdin_open: true # docker run -i
+        #tty: true        # docker run -t
+        links:
+            - aem6513pub-compose:localhostpublish
+        ports:
+            - "4502:4502"
+        volumes:
+            - ./author-logs:/mnt/crx/author/crx-quickstart/logs
+            - aem6513auth_volume:/mnt/crx/author
+    aem6513pub-compose:
+        image: aem-6_5_13-publisher
+        ports:
+            - "4503:4503"
+        volumes:
+            - ./publish-logs:/mnt/crx/publish/crx-quickstart/logs
+            - aem6513pub_volume:/mnt/crx/publish
+volumes:
+    aem6513auth_volume:
+        name: aem6513auth_compose_volume
+    aem6513pub_volume:
+        name: aem6513pub_compose_volume
